@@ -3,10 +3,12 @@ const env = require('dotenv').config();
 const port  = process.env.PORT || 3000;
 const axios = require('axios');
 const requestIp = require('request-ip');
+const morgan = require("morgan");
 const app = express();
 
 app.use(express.json())
 app.use(requestIp.mw())
+app.use(morgan(':method :url :response-time'))
 app.set('trustproxy', true);
 app.enable('trustproxy');
 
