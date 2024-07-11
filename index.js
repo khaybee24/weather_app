@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.get('/weather', async (req, res) => {
     try {
         const name =req.query.name;
-        const ip = "8.8.8.8";
+        const ip = req.clientIp;
 
         if (!name) {
             return res.status(404).json({ message:'please provide a name'})
